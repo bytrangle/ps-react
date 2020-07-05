@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Label from '../Label'
 
-/** Text input with integrated label to enfore consistency in layout, error display, label placement */
+/** Text input with integrated label to enfore consistency in layout, error display, label placement, and required field marker */
 function TextInput({htmlId, name, label, type="text", required=false, onChange, placeholder, value, error, children, ...props}) {
   return (
     <div style={{marginBottom: 16}}>

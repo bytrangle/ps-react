@@ -19,7 +19,7 @@ Label.propTypes = {
   /** Label text */
   label: PropTypes.string.isRequired,
   /** Display asterisk after label if true */
-  required: PropTypes.isRequired
+  required: PropTypes.bool
 }
 
 export default Label
