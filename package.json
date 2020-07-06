@@ -1,5 +1,5 @@
 {
-  "name": "ps-react",
+  "name": "react-recycle",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -64,14 +64,18 @@
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
   },
+  "homepage": "http://trangthule.github.io/ps-react/",
   "scripts": {
     "prestart": "npm run gen:docs",
     "start": "npm-run-all --parallel start:docs gen:docs-watch",
     "start:docs": "node scripts/start.js",
     "gen:docs": "node scripts/generateComponentData.js",
     "gen:docs-watch": "npm run gen:docs -- --watch",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "build:docs": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "predeploy:docs": "npm run build:docs",
+    "deploy:docs": "gh-pages -d build",
+    "build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -92,6 +96,7 @@
     "chokidar": "^3.4.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "gh-pages": "^3.1.0",
     "npm-run-all": "^4.1.5",
     "prop-types": "^15.7.2",
     "react-addons-test-utils": "^15.6.2",
@@ -150,6 +155,12 @@
   },
   "babel": {
     "presets": [
+      [
+        "env",
+        {
+          "modules": "commonjs"
+        }
+      ],
       "react-app"
     ]
   }
